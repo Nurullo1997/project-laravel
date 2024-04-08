@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendEmailJob;
 use App\Mail\ApplicationCreated;
 use App\Models\Application;
 use App\Models\User;
@@ -20,7 +21,7 @@ class ApplicationController extends Controller
             $name = $request->file('file')->getClientOriginalName();
 
 
-            $path = $request->file('file')->storeAs('public/file', $name);
+            $path = $request->file('file')->storeAs('files', $name , 'public');
         }
 
         $request->validate([
@@ -37,14 +38,7 @@ class ApplicationController extends Controller
         ]);
 
 
-
-
-        $manager = User::first();
-
-        Mail::to($manager)->send(new ApplicationCreated($application));
-
-        //Mail::to($request->user())->send(new ApplicationCreated($application));
-
+        dispatch(new SendEmailJob(  $application));
 
         return redirect()->back();
     }

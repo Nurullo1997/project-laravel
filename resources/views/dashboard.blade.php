@@ -48,8 +48,8 @@
                                 </div>
                             @endforeach
 
-                                {{ $applications->links() }}
-                            
+                            {{ $applications->links() }}
+
                         </div>
                     @elseif(auth()->user()->role->name == 'client')
                         {{--  {{ __("You're logged in!") }} --}}
