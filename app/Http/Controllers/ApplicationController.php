@@ -14,13 +14,24 @@ use Illuminate\Support\Facades\Mail;
 
 class ApplicationController extends Controller
 {
+  /*   public function __construct()
+    {
+        $this->middleware('role')->only('index');
+    } */
+
+    public function index()
+    {
+        return view('applications.index')->with([
+            'applications' => auth()->user()->applications()->paginate(10),
+
+        ]);
+    }
 
 
     public function store(StoreApplicationRequest $request)
     {
-        if ($this->checkDate())
-        {
-           return redirect()->back()->with('error', 'You can create only 1 application a day');
+        if ($this->checkDate()) {
+            return redirect()->back()->with('error', 'You can create only 1 application a day');
         }
 
         if ($request->hasFile('file')) {
@@ -31,7 +42,7 @@ class ApplicationController extends Controller
             $path = $request->file('file')->storeAs('files', $name, 'public');
         }
 
-       
+
 
         $application = Application::create([
             'user_id' => auth()->user()->id,
@@ -48,8 +59,7 @@ class ApplicationController extends Controller
 
     protected function checkDate()
     {
-        if(auth()->user()->applications()->latest()->first() == null)
-        {
+        if (auth()->user()->applications()->latest()->first() == null) {
             return false;
         }
 
