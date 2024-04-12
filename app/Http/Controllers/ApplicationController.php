@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Mail;
 
 class ApplicationController extends Controller
 {
-  /*   public function __construct()
+   /*  public function __construct()
     {
         $this->middleware('role')->only('index');
     } */

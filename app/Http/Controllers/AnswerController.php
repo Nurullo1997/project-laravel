@@ -9,10 +9,9 @@ use Illuminate\Support\Facades\Gate;
 class AnswerController extends Controller
 {
 
-
     public function create(Application $application)
     {
-        if (! Gate::allows('update-post', auth()->user())) {
+        if ( Gate::allows('update-post', auth()->user())) {
             abort(403);
         }
 
