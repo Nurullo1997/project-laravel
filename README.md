@@ -7,6 +7,9 @@
 
 ## Proyektni o'rnatish
 ```
+cp .env.example .env
+```
+```
 composer instal
 ```
 ```
@@ -15,6 +18,21 @@ npm instal
 ```
 npm run dev
 ```
+```
+php artisan key:generate
+```
+```
+php artisan storage:link
+```
+```
+php artisan sail:install
+```
+```
+artisan queue:work
+```
+## .env
+- MAIL_MAILER=log
+
 
 ### Foydalanuvchilar
 user :  manage@company.com \
