@@ -19,6 +19,9 @@ npm instal
 npm run dev
 ```
 ```
+php artisan migrate:fresh --seed
+```
+```
 php artisan key:generate
 ```
 ```
