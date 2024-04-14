@@ -42,7 +42,7 @@ user :  manage@company.com \
 password : secret
 
 ### Baza Strukturasi
-![alt text](img77.png)
+![alt text](img.png)
 
 
 
